@@ -29,9 +29,10 @@ const Player = function (name, mark) {
     return { name, mark };
 };
 
-//game controller module with methods to manipulate the flow of the game and outcome
+//game controller module
+//handle turns
+//handle winning combinations
+const Game = (()=>{})();
 
-
-const Game = {
-
-}
+//display controller module with methods to render and handle eventlisteners
+const DisplayController = (()=>{})();
