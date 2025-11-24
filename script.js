@@ -1,24 +1,26 @@
 //gameboard module with methods to manipulate the board
 const Gameboard = (function() {
 
-    //the structure of the gameboard
-    const matrix = ["", "", "","", "", "","", "", ""];
+    //the array that holds the gameboard state
+    const board = ["", "", "", "", "", "", "", "", ""];
 
-    //a method to reset the game board
+    //a method to reset the game board array
     const resetBoard = function() {
-        for(let i=0;i<8;i++){
-            matrix[i]='';
+        for(let i=0; i<8; i++){
+            board[i]='';
         }
     };
 
-    //a method to place x or o on th board
-    const placeMark = function(index, mark) {
-
+    //a method to place a mark in the board array
+    const placeMark = function(i, mark) {
+        if (board[i] === '') {
+            board[i] = mark;
+            return true; //mark placed
+        }
+        else {return false;} //mark not placed
     };
-    //a method to get the state of the bard matrix
-    const getBoard = function() {
-        ;
-    }
+    //a method to get the state of the board array
+    const getBoard = () => board;
 
     return {resetBoard,placeMark,getBoard};
     
@@ -32,7 +34,10 @@ const Player = function (name, mark) {
 //game controller module
 //handle turns
 //handle winning combinations
-const Game = (()=>{})();
+const GameController = (() => {
+    
+})();
+
 
 //display controller module with methods to render and handle eventlisteners
 const DisplayController = (()=>{})();
