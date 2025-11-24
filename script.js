@@ -1,43 +1,54 @@
-//gameboard module with methods to manipulate the board
-const Gameboard = (function() {
+//logic for controlling the gameboard state
+const Gameboard = (() => {
 
-    //the array that holds the gameboard state
     const board = ["", "", "", "", "", "", "", "", ""];
 
-    //a method to reset the game board array
     const resetBoard = function() {
         for(let i=0; i<8; i++){
             board[i]='';
         }
     };
 
-    //a method to place a mark in the board array
-    const placeMark = function(i, mark) {
-        if (board[i] === '') {
-            board[i] = mark;
-            return true; //mark placed
+    const placeMark = function(index, mark) {
+        if (board[index] === '') {
+            board[index] = mark;
         }
-        else {return false;} //mark not placed
     };
-    //a method to get the state of the board array
+    
     const getBoard = () => board;
 
     return {resetBoard,placeMark,getBoard};
     
 })();
 
-//player factory 
-const Player = function (name, mark) {
-    return { name, mark };
-};
-
-//game controller module
-//handle turns
-//handle winning combinations
+//logic for controlling the game state
 const GameController = (() => {
     
+    const Player = (name, mark) => ({ name, mark });
+    let player1, player2;
+    let currentPlayer;
+
+    const startGame = (name1, name2) => {
+        Gameboard.resetBoard();
+        player1 = Player(name1, 'X');
+        player2 = Player(name2, 'O');
+        currentPlayer = player1;
+    };
+
+    const changePlayer = () => {
+        currentPlayer = currentPlayer === player1 ? player2 : player1;
+    };
+
+    const checkWinConditions = (currentPlayer) => {
+        if (currentPlayer === player1) {
+            
+        }
+    };
+
+    const playTurn = () => {};
+
+    return { startGame, playTurn};
 })();
 
-
-//display controller module with methods to render and handle eventlisteners
-const DisplayController = (()=>{})();
+//logic for controlling the screen render state
+const DisplayController = (() => {})();
