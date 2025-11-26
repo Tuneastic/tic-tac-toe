@@ -24,12 +24,17 @@ const GameController = (() => {
         player2 = Player(name2, 'O');
         currentPlayer = player1;
     };
-    const finishGame = (player) => {
-        alert(`${player.name} wins! Congratulations! ${player.mark} rules the day :D`);
+    const resetGame = () => {
         Gameboard.resetBoard();
         player1 = null;
         player2 = null;
         currentPlayer = null;
+    }
+    const winnerMessage = (player) => {
+        alert(`${player.name} wins! Congratulations! ${player.mark} rules the day :D`);
+    }
+    const nameMessage = (name) => {
+        alert(`It's ${name}'s turn`);
     }
     const winConditions = [
         [0, 1, 2],
@@ -47,7 +52,7 @@ const GameController = (() => {
             for (let i = 0; i < winConditions.length; i++) {
                 const combination = winConditions[i];
                 if (combination.every(index => board[index] === 'X')) {
-                    finishGame(player1);
+                    winnerMessage(player1);
                     break;
                 }
             }
@@ -56,7 +61,7 @@ const GameController = (() => {
             for (let i = 0; i < winConditions.length; i++) {
                 const combination = winConditions[i];
                 if (combination.every(index => board[index] === 'O')) {
-                    finishGame(player2);
+                    winnerMessage(player2);
                     break;
                 }
             }
@@ -64,22 +69,30 @@ const GameController = (() => {
     };
     const playTurn = (index) => {
         if (currentPlayer === player1) {
+            nameMessage(player1.name);
             Gameboard.placeMark(index, 'X')
         }
         else if (currentPlayer === player2) {
+            nameMessage(player2.name);
             Gameboard.placeMark(index, 'O')
         }
         checkWinConditions();
         changePlayer();
     };
-    return { startGame, playTurn};
+    return { startGame, resetGame, playTurn};
 })();
 
 GameController.startGame('Henry', 'Julie');
 GameController.playTurn(0);
+console.log(Gameboard.getBoard());
 GameController.playTurn(4);
+console.log(Gameboard.getBoard());
 GameController.playTurn(1);
+console.log(Gameboard.getBoard());
 GameController.playTurn(5);
+console.log(Gameboard.getBoard());
 GameController.playTurn(2);
+console.log(Gameboard.getBoard());
+GameController.resetGame();
 console.log(Gameboard.getBoard());
 const DisplayController = (() => {})();
