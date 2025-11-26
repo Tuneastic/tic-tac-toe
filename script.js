@@ -54,7 +54,7 @@ const GameController = (() => {
         if (currentPlayer === player1) {
             for (let i = 0; i < winConditions.length; i++) {
                 const combination = winConditions[i];
-                if (combination.every(index => board[index] === 'X')) {
+                if (combination.every(index => board[index] === player1.mark)) {
                     winnerMessage(player1);
                     break;
                 }
@@ -63,7 +63,7 @@ const GameController = (() => {
         else if (currentPlayer === player2) {
             for (let i = 0; i < winConditions.length; i++) {
                 const combination = winConditions[i];
-                if (combination.every(index => board[index] === 'O')) {
+                if (combination.every(index => board[index] === player2.mark)) {
                     winnerMessage(player2);
                     break;
                 }
