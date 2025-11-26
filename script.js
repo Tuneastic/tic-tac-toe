@@ -43,6 +43,10 @@ const GameController = (() => {
         if (currentPlayer === player1) {
             
         }
+
+        else if (currentPlayer === player2) {
+
+        }
     };
 
     const playTurn = () => {};
