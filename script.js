@@ -11,7 +11,7 @@ const Gameboard = (() => {
         }
     };
     const getBoard = () => board;
-    return {resetBoard,placeMark,getBoard};
+    return { resetBoard, placeMark, getBoard };
 })();
 const GameController = (() => {
     let player1, player2;
@@ -33,8 +33,8 @@ const GameController = (() => {
     const winnerMessage = (player) => {
         alert(`${player.name} wins! Congratulations! ${player.mark} rules the day :D`);
     }
-    const nameMessage = (name) => {
-        alert(`It's ${name}'s turn`);
+    const turnMessage = (name, mark) => {
+        alert(`It's ${name}'s turn, your mark is ${mark}`);
     }
     const winConditions = [
         [0, 1, 2],
@@ -69,17 +69,20 @@ const GameController = (() => {
     };
     const playTurn = (index) => {
         if (currentPlayer === player1) {
-            nameMessage(player1.name);
-            Gameboard.placeMark(index, 'X')
+            turnMessage(player1.name, player1.mark);
+            Gameboard.placeMark(index, player1.mark)
         }
         else if (currentPlayer === player2) {
-            nameMessage(player2.name);
-            Gameboard.placeMark(index, 'O')
+            turnMessage(player2.name, player2.mark);
+            Gameboard.placeMark(index, player2.mark)
         }
         checkWinConditions();
         changePlayer();
     };
-    return { startGame, resetGame, playTurn};
+    return { startGame, resetGame, playTurn };
+})();
+const DisplayController = (() => {
+
 })();
 
 GameController.startGame('Henry', 'Julie');
@@ -95,4 +98,3 @@ GameController.playTurn(2);
 console.log(Gameboard.getBoard());
 GameController.resetGame();
 console.log(Gameboard.getBoard());
-const DisplayController = (() => {})();
