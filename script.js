@@ -1,7 +1,6 @@
 const Gameboard = (() => {
     const board = ["", "", "", "", "", "", "", "", ""];
     const resetBoard = function() {
-        
         for(let i=0; i<8; i++){
             board[i]='';
         }
@@ -42,10 +41,11 @@ const GameController = (() => {
         [0, 4, 8],
         [2, 4, 6]
     ];
-    const checkWinConditions = (currentPlayer) => {
+    const checkWinConditions = () => {
         const board = Gameboard.getBoard();
         if (currentPlayer === player1) {
-            for (const combination of winConditions) {
+            for (let i = 0; i < winConditions.length; i++) {
+                const combination = winConditions[i];
                 if (combination.every(index => board[index] === 'X')) {
                     finishGame(player1);
                     break;
@@ -53,7 +53,8 @@ const GameController = (() => {
             }
         }
         else if (currentPlayer === player2) {
-            for (const combination of winConditions) {
+            for (let i = 0; i < winConditions.length; i++) {
+                const combination = winConditions[i];
                 if (combination.every(index => board[index] === 'O')) {
                     finishGame(player2);
                     break;
@@ -61,7 +62,24 @@ const GameController = (() => {
             }
         }
     };
-    const playTurn = () => {};
+    const playTurn = (index) => {
+        if (currentPlayer === player1) {
+            Gameboard.placeMark(index, 'X')
+        }
+        else if (currentPlayer === player2) {
+            Gameboard.placeMark(index, 'O')
+        }
+        checkWinConditions();
+        changePlayer();
+    };
     return { startGame, playTurn};
 })();
+
+GameController.startGame('Henry', 'Julie');
+GameController.playTurn(0);
+GameController.playTurn(4);
+GameController.playTurn(1);
+GameController.playTurn(5);
+GameController.playTurn(2);
+console.log(Gameboard.getBoard());
 const DisplayController = (() => {})();
