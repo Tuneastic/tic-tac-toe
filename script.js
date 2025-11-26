@@ -33,8 +33,11 @@ const GameController = (() => {
     const winnerMessage = (player) => {
         alert(`${player.name} wins! Congratulations! ${player.mark} rules the day :D`);
     }
-    const turnMessage = (name, mark) => {
-        alert(`It's ${name}'s turn, your mark is ${mark}`);
+    const drawMessage = () => {
+        alert(`It's a draw! Both ${player1.mark} and ${player2.mark} rule the day :P`)
+    }
+    const turnMessage = () => {
+        alert(`It's ${currentPlayer.name}'s turn, ${currentPlayer.name}'s mark is ${currentPlayer.mark}`);
     }
     const winConditions = [
         [0, 1, 2],
@@ -66,14 +69,17 @@ const GameController = (() => {
                 }
             }
         }
+        else if (board.every(cell => cell !== '')) {
+            drawMessage();
+        }
     };
     const playTurn = (index) => {
         if (currentPlayer === player1) {
-            turnMessage(player1.name, player1.mark);
+            turnMessage();
             Gameboard.placeMark(index, player1.mark)
         }
         else if (currentPlayer === player2) {
-            turnMessage(player2.name, player2.mark);
+            turnMessage();
             Gameboard.placeMark(index, player2.mark)
         }
         checkWinConditions();
