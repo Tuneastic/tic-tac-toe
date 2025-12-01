@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function() {
 const Gameboard = (() => {
     const board = ["", "", "", "", "", "", "", "", ""];
     const resetBoard = function() {
@@ -88,19 +89,8 @@ const GameController = (() => {
     return { startGame, resetGame, playTurn };
 })();
 const DisplayController = (() => {
-
+    const initialize = () => {
+        
+    }
 })();
-
-GameController.startGame('Henry', 'Julie');
-GameController.playTurn(0);
-console.log(Gameboard.getBoard());
-GameController.playTurn(4);
-console.log(Gameboard.getBoard());
-GameController.playTurn(1);
-console.log(Gameboard.getBoard());
-GameController.playTurn(5);
-console.log(Gameboard.getBoard());
-GameController.playTurn(2);
-console.log(Gameboard.getBoard());
-GameController.resetGame();
-console.log(Gameboard.getBoard());
+});
