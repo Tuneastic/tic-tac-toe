@@ -1,0 +1,17 @@
+ul {
+    list-style-type: none;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap:20px;
+}
+
+button {
+    width:150px;
+    height:150px;
+    border-radius: 50%;
+}
+
+button:hover {
+    scale:1.2;
+}

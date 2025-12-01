@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+
 const Gameboard = (() => {
     const board = ["", "", "", "", "", "", "", "", ""];
     const resetBoard = function() {
@@ -89,8 +90,25 @@ const GameController = (() => {
     return { startGame, resetGame, playTurn };
 })();
 const DisplayController = (() => {
-    const initialize = () => {
-        
+    const onPageLoad = () => {
     }
+    const createGameBoard = () => {
+        const gameBoardUL = document.getElementById('gameBoardUl');
+        for (let i = 1; i <= 9; i++) {
+            const gameBoardUlLi = document.createElement('li');
+            const gameBoardUlLiButton = document.createElement('button');
+            gameBoardUlLi.id = `li${i}`;
+            gameBoardUlLiButton.id = `button${i}`;
+            gameBoardUlLiButton.textContent = '';
+            gameBoardUlLi.appendChild(gameBoardUlLiButton);
+            gameBoardUL.appendChild(gameBoardUlLi);
+        }
+    }
+    const changeButtonMark = () => {
+
+    }
+    return { createGameBoard };
 })();
+DisplayController.createGameBoard();
+
 });
