@@ -123,6 +123,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 gameBoardUlLi.appendChild(gameBoardUlLiButton);
                 gameBoardUL.appendChild(gameBoardUlLi);
                 gameBoardUlLiButton.addEventListener('click', () => {
+                    if(gameBoardUlLiButton.textContent != ''){
+                        alert('This space is already taken.');
+                        return;
+                    }
                     GameController.playTurn(i);
                     updateButton();
                     setTimeout(() => {
