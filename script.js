@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-
+    //Gameboard controlling module
     const Gameboard = (() => {
         const board = ["", "", "", "", "", "", "", "", ""];
         const resetBoard = function() {
@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const getBoard = () => board;
         return { resetBoard, placeMark, getBoard };
     })();
+    //Game flow controlling module
     const GameController = (() => {
         let player1, player2;
         let currentPlayer;
@@ -94,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
         return { resetGame, playTurn, changePlayer, checkWinConditions, askPLayerNames, currentPlayerMessage };
     })();
+    //Display rendering module
     const DisplayController = (() => {
         const updateButton = () => {
             for (let i=0; i <=8; i++){
@@ -103,7 +105,15 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         const createGameBoard = () => {
             const gameBoardUL = document.getElementById('gameBoardUl');
+            const gameBoardDiv = document.getElementById('gameBoardDiv');
             const board = Gameboard.getBoard();
+            const resetButton = document.createElement('button');
+            resetButton.id = 'resetButton';
+            resetButton.textContent = 'Reset';
+            gameBoardDiv.appendChild(resetButton);
+            resetButton.addEventListener('click', () => {
+                    GameController.resetGame();
+                })
             for (let i = 0; i <= 8; i++) {
                 const gameBoardUlLi = document.createElement('li');
                 const gameBoardUlLiButton = document.createElement('button');
@@ -123,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 })
             }
         };
-        return { createGameBoard, updateButton };
+        return { createGameBoard };
     })();
 
     DisplayController.createGameBoard();

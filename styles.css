@@ -6,12 +6,22 @@ ul {
     gap:20px;
 }
 
-button {
+#gameBoardUl button {
     width:150px;
     height:150px;
     border-radius: 50%;
 }
 
-button:hover {
+#gameBoardUl button:hover {
     scale:1.2;
+}
+
+#resetButton {
+    width:100%;
+    height:50px;
+    border-radius: 15px;
+}
+
+#resetButton:hover {
+    scale:0.9;
 }
