@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const getBoard = () => board;
         return { resetBoard, placeMark, getBoard };
     })();
+
     //Game flow controlling module
     const GameController = (() => {
         let player1, player2;
@@ -95,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
         return { resetGame, playTurn, changePlayer, checkWinConditions, askPLayerNames, currentPlayerMessage };
     })();
+
     //Display rendering module
     const DisplayController = (() => {
         const updateButton = () => {
@@ -139,10 +141,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
         return { createGameBoard };
     })();
-
     DisplayController.createGameBoard();
     GameController.askPLayerNames();
     GameController.currentPlayerMessage();
-
-
 });
