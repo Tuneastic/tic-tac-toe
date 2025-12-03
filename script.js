@@ -122,8 +122,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 gameBoardUlLiButton.textContent = '';
                 gameBoardUlLi.appendChild(gameBoardUlLiButton);
                 gameBoardUL.appendChild(gameBoardUlLi);
-                gameBoardUlLiButton.addEventListener('click', () => {
-                    if(gameBoardUlLiButton.textContent != ''){
+                gameBoardUlLiButton.addEventListener('click', function() {
+                    if(this.textContent != ''){
                         alert('This space is already taken.');
                         return;
                     }
