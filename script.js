@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
             alert(`${player.name} wins! Congratulations! ${player.mark} rules the day :D`);
         }
         const drawMessage = () => {
-            alert(`It's a draw! Both ${player1.mark} and ${player2.mark} rule the day :P`)
+            alert(`It's a draw! Both ${player1.mark} and ${player2.mark} rule the day :D`)
         }
         const currentPlayerMessage = () => {
             alert(`It's ${currentPlayer.name}'s turn! Their mark is ${currentPlayer.mark}.`)
